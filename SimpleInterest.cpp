@@ -1,6 +1,6 @@
 /**
  * @file SimpleInterest.cpp
- * @author your name (you@domain.com)
+ * @author Md. Yousuf Ali (yousuf.cse17@gmail.com)
  * @brief Calculate simple interest, (p*n*r)/100 formula
  * @version 0.1
  * @date 2022-10-16
