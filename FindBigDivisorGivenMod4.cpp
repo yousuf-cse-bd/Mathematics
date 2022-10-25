@@ -9,24 +9,28 @@
  * Dept. of CSE, Varendra University, Rajshahi, Bangladesh
  */
 #include <iostream>
-#include <algorithm>
 using namespace std;
 class FindBigDivisor{
+private:
+    unsigned int number1, number2, fixedRemainder;
 public:
-    /*Finding big divisor using GCD's concept*/
-    void bigDivisorUsingGCD(unsigned int number1, unsigned int number2, const unsigned int fixedRemainder){
-        number1 = number1 - fixedRemainder;
-        number2 = number2 - fixedRemainder;
-        unsigned int temp;
-        /*Applying GCD divided system alogorithm*/
-        while(number2 != 0){
-            temp = number1 % number2;
-            number1 = number2;
-            number2 = temp;
-        }
-        cout<<"The big divisor: "<<number1<<endl;
+    FindBigDivisor(unsigned int number1, unsigned int number2, const unsigned int fixedRemainder){
+        this->number1 = number1, this->number2 = number2, this->fixedRemainder = fixedRemainder;
     }
-    void bigDivisorUsingIteration(unsigned int number1, unsigned int number2, const unsigned int fixedRemainder){
+    /*Finding big divisor using GCD's concept*/
+    void bigDivisorUsingGCD(void){
+        unsigned int temp, num1, num2;
+        num1 = number1 - fixedRemainder;
+        num2 = number2 - fixedRemainder;
+        /*Applying GCD divided system alogorithm*/
+        while(num2 != 0){
+            temp = num1 % num2;
+            num1 = num2;
+            num2 = temp;
+        }
+        cout<<"The big divisor: "<<num1<<endl;
+    }
+    void bigDivisorUsingIteration(void){
         unsigned int bigNumber, bigDivisor;
         if(number1 < number2){
             bigNumber = number2;
@@ -45,7 +49,6 @@ public:
 int main(int argc, char const *argv[]){
     /* code */
     system("cls");
-    FindBigDivisor divisor;
     unsigned int number1, number2, fixedRemainder;
     cout<<"\tEnter Number1: ";
     cin>>number1;
@@ -53,7 +56,8 @@ int main(int argc, char const *argv[]){
     cin>>number2;
     cout<<"\tEnter Fixed Remainder: ";
     cin>>fixedRemainder;
-    divisor.bigDivisorUsingGCD(number1, number2, fixedRemainder);
-    divisor.bigDivisorUsingIteration(number1, number2, fixedRemainder);
+    FindBigDivisor divisor = FindBigDivisor(number1, number2, fixedRemainder);
+    divisor.bigDivisorUsingGCD();
+    divisor.bigDivisorUsingIteration();
     return 0;
 }
